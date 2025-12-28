@@ -22,6 +22,15 @@ endif()
 # ============================================================
 option(BUILD_TESTS "Build test executable" ON)
 option(ULTRA_FAST "Enable insane optimizations" ON)
+include(CheckIPOSupported)
+check_ipo_supported(RESULT IPO_SUPPORTED OUTPUT IPO_ERROR)
+
+if(ULTRA_FAST AND IPO_SUPPORTED)
+    set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
+elseif(ULTRA_FAST)
+    message(WARNING "IPO/LTO not supported, disabling")
+endif()
+
 
 # ============================================================
 # Core library
