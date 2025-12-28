@@ -26,9 +26,6 @@ if [ $? -eq 0 ]; then
     echo "To test on Windows:"
     echo "1. Copy main.exe to a Windows machine"
     echo "2. Run it from Command Prompt or PowerShell"
-    echo ""
-    echo "File sizes:"
-    ls -lh output/*.exe
 else
     echo "❌ Build failed!"
     exit 1
