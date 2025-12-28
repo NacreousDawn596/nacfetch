@@ -11,12 +11,18 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
+  export CC=/usr/bin/gcc
+  export CXX=/usr/bin/g++
+  export AR=/usr/bin/ar
+  export RANLIB=/usr/bin/ranlib
+
   cd "$pkgname-$pkgver"
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DULTRA_FAST=OFF \
     -DBUILD_TESTS=OFF \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
+
   cmake --build build
 }
 
