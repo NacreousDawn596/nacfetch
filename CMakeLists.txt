@@ -30,6 +30,8 @@ if(ULTRA_FAST AND IPO_SUPPORTED)
 elseif(ULTRA_FAST)
     message(WARNING "IPO/LTO not supported, disabling")
 endif()
+options=(!lto)
+
 
 
 # ============================================================

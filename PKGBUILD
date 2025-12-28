@@ -15,9 +15,11 @@ build() {
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DULTRA_FAST=OFF \
-    -DBUILD_TESTS=OFF
+    -DBUILD_TESTS=OFF \
+    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
   cmake --build build
 }
+
 
 package() {
   cd "$pkgname-$pkgver"
